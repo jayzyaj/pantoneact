@@ -1,10 +1,20 @@
-import Splash from '../screens/splash'
+import React from 'react'
+
 import {
     createSwitchNavigator,
     createAppContainer,
     createDrawerNavigator,
     createStackNavigator
-  } from 'react-navigation';
+} from 'react-navigation';
+
+import { COLOR } from './styles'
+
+import Home from "../screens/home";
+import Login from "../screens/login";
+import Splash from '../screens/splash'
+
+import DrawerComponent from "../components/drawer"
+import DrawerHeader from '../components/header';
 
 //   const DashboardStackNavigator = createStackNavigator(
 //     {
@@ -26,20 +36,55 @@ import {
 //     }
 //   );
 
-//   const AppDrawerNavigator = createDrawerNavigator({
-//     Dashboard: {
-//       screen: DashboardStackNavigator
-//     }
-//   });
-  
-  const AppSwitchNavigator = createSwitchNavigator({
-    Splash: { screen: Splash },
-    // UnauthenticatedScreens: { screen: WelcomeScreen },
-    // Dashboard: { screen: AppDrawerNavigator }
-  }, {
-      initialRouteName: 'Splash'
-    });
-  
-  const AppContainer = createAppContainer(AppSwitchNavigator);
+const UnauthenticatedScreens = createStackNavigator({
+    Login: {
+        screen: Login
+    }
+});
 
-  export default AppContainer
+
+const AuthenticatedInitialScreens = createStackNavigator(
+    {
+        Home: {
+            screen: Home
+        },
+    },
+    {
+        defaultNavigationOptions: ({ navigation }) => {
+            return {
+                header:
+                    <DrawerHeader
+                        headerTitle={navigation.state.routeName}
+                        icon="menu"
+                        onPress={() => navigation.openDrawer()}
+                    />
+            };
+        }
+    }
+);
+
+const AppDrawerNavigator = createDrawerNavigator(
+    {
+        Home: AuthenticatedInitialScreens,
+    }, {
+        initialRouteName: 'Home',
+        contentComponent: DrawerComponent,
+        contentOptions: {
+            activeTintColor: COLOR.PANTOME
+        }
+    }
+);
+
+const AppSwitchNavigator = createSwitchNavigator(
+    {
+        Splash: { screen: Splash },
+        UnauthenticatedScreens: { screen: UnauthenticatedScreens },
+        AuthenticatedInitialScreens: { screen: AppDrawerNavigator }
+    }, {
+        initialRouteName: 'Splash'
+    }
+);
+
+const AppContainer = createAppContainer(AppSwitchNavigator);
+
+export default AppContainer

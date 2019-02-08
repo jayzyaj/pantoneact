@@ -35,13 +35,6 @@ class DrawerComponent extends Component {
                 <ScrollView>
                     <DrawerItems
                         {...this.props}
-                        onItemPress={({ route, focused }) => {
-                            if (focused) { // If pressed on the current active route just close the drawer
-                                this.props.navigation.dispatch(DrawerActions.closeDrawer());
-                            } else { // Otherwise navigate to the route or screen on press
-                                this.props.navigation.navigate(route.routeName);
-                            }
-                        }}
                     />
                     <CustomButton
                         onPress={() => {

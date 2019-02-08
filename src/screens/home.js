@@ -26,13 +26,13 @@ class Home extends Component {
     render() {
         return (
             <View style={[Styles.container, { padding: 0 }]}>
-                <View style={Styles.header}>
+                {/* <View style={Styles.header}>
                     <DrawerHeader
                         headerTitle="Home"
                         icon="menu"
                         onPress={() => this.props.navigation.openDrawer()}
                     />
-                </View>
+                </View> */}
                 <View
                     style={{
                         // flex: 1,

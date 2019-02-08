@@ -49,6 +49,11 @@ class Login extends Component {
         }
     }
 
+    // handleLoginRequest = () => {
+    //     this.props.actions.login(this.state.email, this.state.password)
+    //     if (this.props.state.isAuth) this.props
+    // }
+
     render() {
         return (
             <View style={Styles.container}>
@@ -79,17 +84,15 @@ class Login extends Component {
                             />
                             <View style={{ height: 16 }} />
                             <CustomButton
-                                onPress={() =>
+                                onPress={() => {
                                     this.props.actions.login(this.state.email, this.state.password)
-                                }
+                                }}
                                 title={"SIGN IN"}
                             />
                         </Card>
                     </View>
                 </TouchableWithoutFeedback>
-                {/* <View> */}
                 <CustomLoading loading={this.props.state.requestingAuth} />
-                {/* </View> */}
             </View>
         );
     }

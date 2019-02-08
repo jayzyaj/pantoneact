@@ -13,12 +13,12 @@ class Splash extends Component {
     }
 
     componentDidMount() {
-        // setTimeout(() => {
-        //     this.props.actions.restoreSession();
-        //     this.props.state.isAuth
-        //         ? this.props.navigation.navigate('Dashboard')
-        //         : this.props.navigation.navigate('Welcome')
-        // }, 2000);
+        this.props.actions.restoreSession();
+        setTimeout(() => {
+            this.props.state.isAuth
+                ? this.props.navigation.navigate('AuthenticatedInitialScreens')
+                : this.props.navigation.navigate('UnauthenticatedScreens')      
+        }, 2000);
     }
 
     render() {
