@@ -15,8 +15,8 @@ const createStoreWithMiddleware = applyMiddleware(thunk, logger)(createStore);
 const reducer = combineReducers(reducers);
 
 const rootReducer = (state, action) => {
-  if (action.type === LOGOUT_SUCCESS) {
-    state = undefined
+  if (action.type === LOGOUT_SUCCESS) { // If the user have successfully signed out and ended his/her session
+    state = undefined // Reset all state to remove cached data of the previous session
   }
   return reducer(state, action)
 }
