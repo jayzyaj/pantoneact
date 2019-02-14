@@ -13,7 +13,7 @@ import {
     RESTORE_FAILED
 } from "../config/action-types/authenticate";
 
-export function login(email, password) { // Fake authentication function
+export function login(email, password ,navigateTo) { // Fake authentication function
     return async dispatch => {
         dispatch(loginRequest()); // dispatch a login request to update the state
         try {
@@ -22,6 +22,7 @@ export function login(email, password) { // Fake authentication function
                 await AsyncStorage.setItem(DATA_SESSION, JSON.stringify(session)) // Stringinfy the session data and store it
                 setTimeout(() => { // Add a delay for faking a asynchronous request
                     dispatch(loginSuccess(session)) // Dispatch a successful sign in after 1.5 seconds
+                    navigateTo("AuthenticatedInitialScreens") // If successfull login navigate to the authenticated screen
                 }, 1500)
             } else { // Otherwise display an error to the user
                 setTimeout(() => { // Dispatch an error state
@@ -51,12 +52,13 @@ export function restoreSession() { // Restore session of the user who is authent
     };
 } // restoreSession
 
-export function logout() { // Fake logout request
+export function logout(navigateTo) { // Fake logout request
     return async dispatch => {
         dispatch(logoutRequest()) // Dispatch a logout request
         try {
             setTimeout(async () => { // Add a 1.5 second delay to fake an asynchronous ajax request
                 await AsyncStorage.removeItem(DATA_SESSION); // Remove the session data and unauthenticate the user
+                navigateTo("UnauthenticatedScreens") // If successfull logout navigate to the login screen
                 dispatch(logoutSuccess()) // Dispatch a logout success action
             }, 1500)
         } catch (err) { // When something goes wrong

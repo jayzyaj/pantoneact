@@ -85,7 +85,7 @@ class Login extends Component {
                             <View style={{ height: 16 }} />
                             <CustomButton
                                 onPress={() => {
-                                    this.props.actions.login(this.state.email, this.state.password)
+                                    this.props.actions.login(this.state.email, this.state.password, this.props.navigation.navigate)
                                 }}
                                 title={"SIGN IN"}
                             />

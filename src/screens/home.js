@@ -74,7 +74,9 @@ class Home extends Component {
                         height: 40
                     }}
                 >
-                    <CustomButton onPress={this.props.actions.logout} title={"SIGN OUT"} />
+                    <CustomButton onPress={() => {
+                        this.props.actions.logout(this.props.navigation.navigate)
+                    }} title={"SIGN OUT"} />
                 </View>
                 <CustomLoading text={"Signing you out..."} loading={this.props.state.clearingAuth} />
             </View>

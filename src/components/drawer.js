@@ -39,7 +39,7 @@ class DrawerComponent extends Component {
                     <CustomButton
                         onPress={() => {
                             this.props.navigation.dispatch(DrawerActions.closeDrawer());
-                            this.props.actions.logout()
+                            this.props.actions.logout(this.props.navigation.navigate)
                         }}
                         title={"LOG OUT"}
                     />
