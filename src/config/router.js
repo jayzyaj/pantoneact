@@ -16,44 +16,23 @@ import Splash from '../screens/splash'
 import DrawerComponent from "../components/drawer"
 import DrawerHeader from '../components/header';
 
-//   const DashboardStackNavigator = createStackNavigator(
-//     {
-//       Home: Home
-//     },
-//     {
-//       defaultNavigationOptions: ({ navigation }) => {
-//         return {
-//           headerLeft: (
-//             <Icon
-//               style={{ paddingLeft: 10 }}
-//               onPress={() => navigation.openDrawer()}
-//               name="md-menu"
-//               size={30}
-//             />
-//           )
-//         };
-//       }
-//     }
-//   );
-
-const UnauthenticatedScreens = createStackNavigator({
-    Login: {
-        screen: Login
+const UnauthenticatedScreens = createStackNavigator(
+    { // Screens
+        Login: { screen: Login }
     }
-});
+);
 
 
 const AuthenticatedInitialScreens = createStackNavigator(
-    {
+    { // Screens
         Home: {
             screen: Home
         },
-    },
-    {
+    }, { // Default options
         defaultNavigationOptions: ({ navigation }) => {
             return {
                 header:
-                    <DrawerHeader
+                    <DrawerHeader // Default header component
                         headerTitle={navigation.state.routeName}
                         icon="menu"
                         onPress={() => navigation.openDrawer()}
@@ -64,11 +43,11 @@ const AuthenticatedInitialScreens = createStackNavigator(
 );
 
 const AppDrawerNavigator = createDrawerNavigator(
-    {
+    { // Screens
         Home: AuthenticatedInitialScreens,
-    }, {
+    }, { // Default options
         initialRouteName: 'Home',
-        contentComponent: DrawerComponent,
+        contentComponent: DrawerComponent, // Default drawer component
         contentOptions: {
             activeTintColor: COLOR.PANTOME
         }
@@ -76,11 +55,11 @@ const AppDrawerNavigator = createDrawerNavigator(
 );
 
 const AppSwitchNavigator = createSwitchNavigator(
-    {
+    { // Screens
         Splash: { screen: Splash },
         UnauthenticatedScreens: { screen: UnauthenticatedScreens },
         AuthenticatedInitialScreens: { screen: AppDrawerNavigator }
-    }, {
+    }, { // Default options
         initialRouteName: 'Splash'
     }
 );
