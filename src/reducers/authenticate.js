@@ -5,7 +5,6 @@ import {
     LOGOUT_REQUEST,
     LOGOUT_SUCCESS,
     LOGOUT_FAILED,
-    RESTORE_SESSION,
     RESTORE_REQUEST,
     RESTORE_FAILED
   } from "../config/action-types/authenticate";
