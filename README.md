@@ -46,3 +46,7 @@ In order to navigate to the **HomeScreen** you need to be authenticated or to si
 **email:** `test123@nomail.com`
 
 **password:** `123456`
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
