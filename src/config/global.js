@@ -1,2 +1,2 @@
 // contains global constants
-export const DATA_SESSION = "pantomeact.session";
+export const DATA_SESSION = "pantoneact.session";

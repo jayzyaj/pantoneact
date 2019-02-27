@@ -1,4 +1,4 @@
-package com.pantomeact;
+package com.pantoneact;
 
 import android.app.Application;
 
