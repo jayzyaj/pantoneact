@@ -1,4 +1,4 @@
-package com.reactnavv3boilerplate;
+package com.pantomeact;
 
 import android.app.Application;
 

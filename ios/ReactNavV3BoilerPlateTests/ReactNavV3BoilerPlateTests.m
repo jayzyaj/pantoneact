@@ -14,11 +14,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React Native!"
 
-@interface ReactNavV3BoilerPlateTests : XCTestCase
+@interface PantomeactTests : XCTestCase
 
 @end
 
-@implementation ReactNavV3BoilerPlateTests
+@implementation PantomeactTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL(^)(UIView *view))test
 {

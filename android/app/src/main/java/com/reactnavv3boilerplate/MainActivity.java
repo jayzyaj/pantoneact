@@ -1,4 +1,4 @@
-package com.reactnavv3boilerplate;
+package com.pantomeact;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
@@ -14,7 +14,7 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "ReactNavV3BoilerPlate";
+        return "Pantomeact";
     }
 
     @Override
