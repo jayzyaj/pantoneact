@@ -1,16 +1,7 @@
 import { AsyncStorage } from "react-native";
 import { DATA_SESSION } from "../config/global";
 
-import {
-    LOGIN_REQUEST,
-    LOGIN_SUCCESS,
-    LOGIN_FAILED,
-    LOGOUT_REQUEST,
-    LOGOUT_SUCCESS,
-    LOGOUT_FAILED,
-    RESTORE_REQUEST,
-    RESTORE_FAILED
-} from "../config/action-types/authenticate";
+import * as types from "../config/action-types/authenticate";
 
 export function login(email, password ,navigateTo) { // Fake authentication function
     return async dispatch => {
@@ -68,13 +59,13 @@ export function logout(navigateTo) { // Fake logout request
 
 function loginRequest() {
     return {
-        type: LOGIN_REQUEST
+        type: types.LOGIN_REQUEST
     };
 } //loginRequest
 
 function loginSuccess(session) {
     return {
-        type: LOGIN_SUCCESS,
+        type: types.LOGIN_SUCCESS,
         data: {
             session
         }
@@ -86,7 +77,7 @@ function loginFailed(error) {
         error = "Network Error";
     }
     return {
-        type: LOGIN_FAILED,
+        type: types.LOGIN_FAILED,
         data: {
             error: error
         }
@@ -95,13 +86,13 @@ function loginFailed(error) {
 
 function logoutRequest() {
     return {
-        type: LOGOUT_REQUEST
+        type: types.LOGOUT_REQUEST
     };
 } //logoutRequest
 
 function logoutSuccess() {
     return {
-        type: LOGOUT_SUCCESS,
+        type: types.LOGOUT_SUCCESS,
     };
 } // logoutSuccess
 
@@ -110,7 +101,7 @@ function logoutFailed(error) {
         error = "Network Error";
     }
     return {
-        type: LOGOUT_FAILED,
+        type: types.LOGOUT_FAILED,
         data: {
             error: error
         }
@@ -119,12 +110,12 @@ function logoutFailed(error) {
 
 function restoreRequest() {
     return {
-        type: RESTORE_REQUEST
+        type: types.RESTORE_REQUEST
     };
 } //restoreRequest
 
 function restoreFailed() {
     return {
-        type: RESTORE_FAILED
+        type: types.RESTORE_FAILED
     };
 } //restoreFailed
